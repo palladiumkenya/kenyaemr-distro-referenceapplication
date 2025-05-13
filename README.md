@@ -1,3 +1,5 @@
+[![CI](https://github.com/palladiumkenya/kenyaemr-distro-referenceapplication/actions/workflows/kenyaemr-distro-build.yml/badge.svg)](https://github.com/palladiumkenya/kenyaemr-distro-referenceapplication/actions/workflows/kenyaemr-distro-build.yml)
+
 # KenyaEMR Reference Application
 
 This project holds the build configuration for the KenyaEMR reference application.
@@ -5,6 +7,7 @@ This project holds the build configuration for the KenyaEMR reference applicatio
 ## Quick start
 
 ### Prerequisites
+
 - Docker and Docker Compose installed
 - Git installed
 - At least 4GB RAM available for Docker
@@ -39,10 +42,12 @@ docker compose logs -f
 ```
 
 The KenyaEMR UI is accessible at:
+
 - Modern UI: http://localhost/openmrs/spa
 - Legacy UI: http://localhost/openmrs
 
 Default credentials:
+
 - Username: admin
 - Password: Admin123
 
@@ -50,10 +55,10 @@ Default credentials:
 
 This distribution consists of four main components:
 
-* db - MariaDB database for storing KenyaEMR data (requires initial database dump)
-* backend - OpenMRS backend with KenyaEMR modules and configurations
-* frontend - Nginx container serving the KenyaEMR 3.x frontend
-* gateway - Nginx reverse proxy that manages routing between frontend and backend services
+- db - MariaDB database for storing KenyaEMR data (requires initial database dump)
+- backend - OpenMRS backend with KenyaEMR modules and configurations
+- frontend - Nginx container serving the KenyaEMR 3.x frontend
+- gateway - Nginx reverse proxy that manages routing between frontend and backend services
 
 ## Configuration
 
@@ -63,11 +68,13 @@ to configure metadata. The Initializer configuration is maintained in a separate
 [KenyaHMIS Content Repository](https://github.com/palladiumkenya/openmrs-content-kenyahmis)
 
 The configuration is organized as follows:
+
 - `configuration/` - Contains all backend configurations
   - `frontend/` - Frontend-specific configurations
   - `backend/` - Backend-specific configurations
 
 To help maintain organization, please follow these naming conventions:
+
 - Use `-core_demo` suffix for demo data files
 - Use `-core_data` suffix for core configuration files
 
@@ -76,22 +83,26 @@ To help maintain organization, please follow these naming conventions:
 If you encounter any issues:
 
 1. Check if all containers are running:
+
 ```bash
 docker compose ps
 ```
 
 2. View container logs:
+
 ```bash
 docker compose logs [service-name]
 ```
 
 3. Restart the application:
+
 ```bash
 docker compose down
 docker compose up -d
 ```
 
 4. Reset the database (WARNING: This will delete all data):
+
 ```bash
 docker compose down -v
 docker compose up -d
@@ -108,5 +119,6 @@ docker compose up -d
 ## Support
 
 For support, please:
+
 1. Check the [KenyaEMR documentation](https://wiki.openmrs.org/display/projects/KenyaEMR)
 2. Report issues on the [GitHub repository](https://github.com/IntelliSOFT-Consulting/kenyaemr-distro-referenceapplication/issues)

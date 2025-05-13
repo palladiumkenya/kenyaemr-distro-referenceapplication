@@ -45,4 +45,4 @@ jobs:
       - name: Publish Distribution
         run: mvn --batch-mode --update-snapshots --activate-profiles distro clean deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
