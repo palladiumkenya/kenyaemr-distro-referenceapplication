@@ -1,61 +1,112 @@
-# OpenMRS 3.0 Reference Application
+# KenyaEMR Reference Application
 
-This project holds the build configuration for the OpenMRS 3.0 reference application, found on
-https://dev3.openmrs.org and https://o3.openmrs.org.
+This project holds the build configuration for the KenyaEMR reference application.
 
 ## Quick start
 
+### Prerequisites
+- Docker and Docker Compose installed
+- Git installed
+- At least 4GB RAM available for Docker
+- A MySQL dump file of the KenyaEMR database (place it in the `mysql-dump` folder)
+
 ### Package the distribution and prepare the run
 
-```
+```bash
+# Clone the repository
+git clone https://github.com/IntelliSOFT-Consulting/kenyaemr-distro-referenceapplication.git
+cd kenyaemr-distro-referenceapplication
+
+# Create mysql-dump directory if it doesn't exist
+mkdir -p mysql-dump
+
+# Place your KenyaEMR database dump file in the mysql-dump directory
+# The dump file should be named with .sql extension
+# Example: kenyaemr_dump.sql
+
+# Build the distribution
 docker compose build
 ```
 
-### Run the app
+### Run the application
 
+```bash
+# Start the application
+docker compose up -d
+
+# To view logs
+docker compose logs -f
 ```
-docker compose up
-```
 
-The new OpenMRS UI is accessible at http://localhost/openmrs/spa
+The KenyaEMR UI is accessible at:
+- Modern UI: http://localhost/openmrs/spa
+- Legacy UI: http://localhost/openmrs
 
-OpenMRS Legacy UI is accessible at http://localhost/openmrs
+Default credentials:
+- Username: admin
+- Password: Admin123
 
 ## Overview
 
-This distribution consists of four images:
+This distribution consists of four main components:
 
-* db - This is just the standard MariaDB image supplied to use as a database
-* backend - This image is the OpenMRS backend. It is built from the main Dockerfile included in the root of the project and
-  based on the core OpenMRS Docker file. Additional contents for this image are drawn from the `distro` sub-directory which
-  includes a full Initializer configuration for the reference application intended as a starting point.
-* frontend - This image is a simple nginx container that embeds the 3.x frontend, including the modules described in  the
-  `frontend/spa-build-config.json` file.
-* proxy - This image is an even simpler nginx reverse proxy that sits in front of the `backend` and `frontend` containers
-  and provides a common interface to both. This helps mitigate CORS issues.
+* db - MariaDB database for storing KenyaEMR data (requires initial database dump)
+* backend - OpenMRS backend with KenyaEMR modules and configurations
+* frontend - Nginx container serving the KenyaEMR 3.x frontend
+* gateway - Nginx reverse proxy that manages routing between frontend and backend services
 
-## Contributing to the configuration
+## Configuration
 
 This project uses the [Initializer](https://github.com/mekomsolutions/openmrs-module-initializer) module
-to configure metadata for this project. The Initializer configuration can be found in the configuration
-subfolder of the distro folder. Any files added to this will be automatically included as part of the
-metadata for the RefApp.
+to configure metadata. The Initializer configuration is maintained in a separate repository:
 
-Eventually, we would like to split this metadata into two packages:
+[KenyaHMIS Content Repository](https://github.com/palladiumkenya/openmrs-content-kenyahmis)
 
-* `openmrs-core`, which will contain all the metadata necessary to run OpenMRS
-* `openmrs-demo`, which will include all of the sample data we use to run the RefApp
+The configuration is organized as follows:
+- `configuration/` - Contains all backend configurations
+  - `frontend/` - Frontend-specific configurations
+  - `backend/` - Backend-specific configurations
 
-The `openmrs-core` package will eventually be a standard part of the distribution, with the `openmrs-demo`
-provided as an optional add-on. Most data in this configuration _should_ be regarded as demo data. We
-anticipate that implementation-specific metadata will replace data in the `openmrs-demo` package,
-though they may use that metadata as a starting point for that customization.
+To help maintain organization, please follow these naming conventions:
+- Use `-core_demo` suffix for demo data files
+- Use `-core_data` suffix for core configuration files
 
-To help us keep track of things, we ask that you suffix any files you add with either
-`-core_demo` for files that should be part of the demo package and `-core_data` for
-those that should be part of the core package. For example, a form named `test_form.json` would become
-`test_core-core_demo.json`.
+## Troubleshooting
 
-Frontend configuration can be found in `frontend/config-core_demo.json`.
+If you encounter any issues:
 
-Thanks!
+1. Check if all containers are running:
+```bash
+docker compose ps
+```
+
+2. View container logs:
+```bash
+docker compose logs [service-name]
+```
+
+3. Restart the application:
+```bash
+docker compose down
+docker compose up -d
+```
+
+4. Reset the database (WARNING: This will delete all data):
+```bash
+docker compose down -v
+docker compose up -d
+```
+
+5. Database initialization issues:
+   - Ensure your database dump file is in the `mysql-dump` directory
+   - The dump file should be a valid MySQL dump with .sql extension
+   - Check the db container logs for any initialization errors:
+   ```bash
+   docker compose logs db
+   ```
+
+## Support
+
+For support, please:
+1. Check the [KenyaEMR documentation](https://wiki.openmrs.org/display/projects/KenyaEMR)
+2. Report issues on the [GitHub repository](https://github.com/IntelliSOFT-Consulting/kenyaemr-distro-referenceapplication/issues)
