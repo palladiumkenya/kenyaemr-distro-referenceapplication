@@ -16,8 +16,11 @@ services:
     environment:
       SPA_PATH: /openmrs/spa
       API_URL: /openmrs
-      SPA_CONFIG_URLS: /openmrs/spa/config-core_demo.json
+      SPA_CONFIG_URLS: /openmrs/spa/config/kenyahmis-package/openmrs.config.json,/openmrs/spa/config/kenyahmis-package/kenyaemr.config.json
       SPA_DEFAULT_LOCALE:
+    volumes:
+      - backend-spa-config:/usr/share/nginx/html/config
+      - backend-spa-config:/usr/share/nginx/html/openmrs/spa
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/"]
       timeout: 5s
@@ -42,6 +45,7 @@ services:
       timeout: 5s
     volumes:
       - openmrs-data:/openmrs/data
+      - backend-spa-config:/openmrs/distribution/spa-config
 
   # Using MySQL 8 instead of MariaDB
   db:
@@ -65,3 +69,4 @@ services:
 volumes:
   openmrs-data: ~
   db-data: ~
+  backend-spa-config: ~
