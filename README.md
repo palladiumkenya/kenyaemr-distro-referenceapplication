@@ -1,5 +1,7 @@
 # KenyaEMR Reference Application
 
+[![Build and Publish](https://github.com/palladiumkenya/kenyaemr-distro-referenceapplication/actions/workflows/kenyaemr-distro-build.yml/badge.svg)](https://github.com/palladiumkenya/kenyaemr-distro-referenceapplication/actions/workflows/kenyaemr-distro-build.yml)
+
 This project holds the build configuration for the KenyaEMR reference application.
 
 ## Quick start
