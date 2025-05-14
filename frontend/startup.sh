@@ -58,4 +58,9 @@ if [ -f "/usr/share/nginx/html/service-worker.js" ]; then
   envsubst '${IMPORTMAP_URL} ${SPA_PATH} ${API_URL}' < "/usr/share/nginx/html/service-worker.js" | sponge "/usr/share/nginx/html/service-worker.js"
 fi
 
+# Copy favicon.ico from assets to the html folder if it exists
+if [ -f "/usr/share/nginx/html/config/assets/kenyahmis-package/favicon.ico" ]; then
+  cp /usr/share/nginx/html/config/assets/kenyahmis-package/favicon.ico /usr/share/nginx/html/
+fi
+
 exec nginx -g "daemon off;"
