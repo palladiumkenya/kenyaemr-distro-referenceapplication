@@ -11,6 +11,7 @@ WORKDIR /app
 
 COPY spa-assemble-config.json .
 COPY spa-build-config.json .
+COPY rename-packages.sh .
 
 ARG CACHE_BUST
 RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} \
@@ -24,6 +25,9 @@ RUN if [ ! -f ./spa/index.html ]; then \
     echo 'Build failed. Please check the logs above for details. This may have happened because of an update to a library that OpenMRS depends on.'; \
     exit 1; \
     fi
+
+# Execute the rename script
+RUN chmod +x ./rename-packages.sh && ./rename-packages.sh
 
 #--------------------------------------------
 # Runtime Stage - Published Image
