@@ -16,7 +16,7 @@ This project holds the build configuration for the KenyaEMR reference applicatio
 
 ```bash
 # Clone the repository
-git clone https://github.com/IntelliSOFT-Consulting/kenyaemr-distro-referenceapplication.git
+git clone https://github.com/palladiumkenya/kenyaemr-distro-referenceapplication.git
 cd kenyaemr-distro-referenceapplication
 
 # Create mysql-dump directory if it doesn't exist
@@ -111,4 +111,4 @@ docker compose up -d
 
 For support, please:
 1. Check the [KenyaEMR documentation](https://wiki.openmrs.org/display/projects/KenyaEMR)
-2. Report issues on the [GitHub repository](https://github.com/IntelliSOFT-Consulting/kenyaemr-distro-referenceapplication/issues)
+2. Report issues on the [GitHub repository](https://github.com/palladiumkenya/kenyaemr-distro-referenceapplication/issues)
