@@ -4,7 +4,7 @@
 #--------------------------------------------
 FROM --platform=$BUILDPLATFORM node:20-alpine AS dev
 
-ARG APP_SHELL_VERSION=next
+ARG APP_SHELL_VERSION=latest
 
 RUN mkdir -p /app
 WORKDIR /app
@@ -14,11 +14,11 @@ COPY spa-build-config.json .
 COPY rename-packages.sh .
 
 ARG CACHE_BUST
-RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} \
+RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-latest} \
     assemble --manifest --mode config \
     --config spa-assemble-config.json \
     --target ./spa
-RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} \
+RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-latest} \
     build --build-config spa-build-config.json \
     --target ./spa
 RUN if [ ! -f ./spa/index.html ]; then \
