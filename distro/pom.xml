@@ -41,7 +41,7 @@
     <htmlformentry.version>5.4.0</htmlformentry.version>
     <htmlwidgets.version>1.11.0</htmlwidgets.version>
     <idgen.version>4.15.0-SNAPSHOT</idgen.version>
-    <initializer.version>2.9.0</initializer.version>
+    <initializer.version>2.10.0-SNAPSHOT</initializer.version>
     <legacyui.version>1.22.0</legacyui.version>
     <metadatadeploy.version>1.13.1-SNAPSHOT</metadatadeploy.version>
     <metadatamapping.version>1.6.0</metadatamapping.version>
@@ -493,6 +493,11 @@
   </profiles>
 
   <repositories>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/donaldkibet/openmrs-module-initializer</url>
+    </repository>
     <repository>
       <id>mks-repo</id>
       <name>Mekom Solutions Nexus Releases</name>
