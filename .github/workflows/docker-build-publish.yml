@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: dkibet # TODO: change to the actual image name
+  IMAGE_NAME: dkibet/kenyaemr-distro-referenceapplication # TODO: change this to the correct image name
 
 jobs:
   build-and-push:
