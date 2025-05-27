@@ -11,6 +11,9 @@ ARG MVN_ARGS="install"
 COPY pom.xml ./
 COPY distro ./distro/
 
+# Copy local Maven settings
+COPY maven-settings.xml /usr/share/maven/ref/settings-docker.xml
+
 # Build the distro, but only deploy from the amd64 build
 RUN --mount=type=secret,id=m2settings,target=/usr/share/maven/ref/settings-docker.xml \
     if [[ "$MVN_ARGS" != "deploy" || "$(arch)" = "x86_64" ]]; then \
