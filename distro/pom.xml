@@ -41,16 +41,16 @@
     <htmlformentry.version>5.4.0</htmlformentry.version>
     <htmlwidgets.version>1.11.0</htmlwidgets.version>
     <idgen.version>4.15.0-SNAPSHOT</idgen.version>
-    <initializer.version>2.9.0-SNAPSHOT</initializer.version>
+    <initializer.version>2.9.0</initializer.version>
     <legacyui.version>1.22.0</legacyui.version>
     <metadatadeploy.version>1.13.1-SNAPSHOT</metadatadeploy.version>
     <metadatamapping.version>1.6.0</metadatamapping.version>
-    <metadatasharing.version>1.10.0-SNAPSHOT</metadatasharing.version>
+    <metadatasharing.version>1.10.0</metadatasharing.version>
     <o3forms.version>2.3.0</o3forms.version>
     <openconceptlab.version>2.4.0</openconceptlab.version>
     <openmrs.version>2.6.15</openmrs.version>
     <ordertemplates.version>1.0.2</ordertemplates.version>
-    <queue.version>2.6.0-SNAPSHOT</queue.version>
+    <queue.version>2.6.0</queue.version>
     <reporting.version>1.27.0</reporting.version>
     <reportingcompatibility.version>2.0.9</reportingcompatibility.version>
     <reportingrest.version>1.15.0</reportingrest.version>
@@ -63,21 +63,21 @@
     <!-- KenyaEMR Modules -->
     <afyastat.version>1.2.3-SNAPSHOT</afyastat.version>
     <facilityreporting.version>1.2.2-SNAPSHOT</facilityreporting.version>
-    <hivtestingservices.version>1.5.6-SNAPSHOT</hivtestingservices.version>
+    <hivtestingservices.version>1.5.6</hivtestingservices.version>
     <insuranceclaims.version>1.0.5-SNAPSHOT</insuranceclaims.version>
     <jasperreport.version>2.1.0-SNAPSHOT</jasperreport.version>
     <kenyacore.version>3.0.2-SNAPSHOT</kenyacore.version>
-    <kenyaemr.cashier.version>4.2.2-SNAPSHOT</kenyaemr.cashier.version>
-    <kenyaemr.version>19.2.0-SNAPSHOT</kenyaemr.version>
+    <kenyaemr.cashier.version>4.2.2</kenyaemr.cashier.version>
+    <kenyaemr.version>19.2.0</kenyaemr.version>
     <kenyaemrCharts.version>1.6.8</kenyaemrCharts.version>
     <kenyaemrextras.version>1.4.4-SNAPSHOT</kenyaemrextras.version>
     <kenyaemrIL.version>1.3.6-SNAPSHOT</kenyaemrIL.version>
     <kenyaemrml.version>1.4.1-SNAPSHOT</kenyaemrml.version>
-    <kenyaemrorderentry.version>1.6.6</kenyaemrorderentry.version>
+    <kenyaemrorderentry.version>1.6.7</kenyaemrorderentry.version>
     <kenyaui.version>3.0.1-SNAPSHOT</kenyaui.version>
     <kenyakeypop.version>1.4.1-SNAPSHOT</kenyakeypop.version>
-    <prep.version>1.4.3-SNAPSHOT</prep.version>
-    <stockmanagement.version>2.0.3-SNAPSHOT</stockmanagement.version>
+    <prep.version>1.4.3</prep.version>
+    <stockmanagement.version>2.0.3</stockmanagement.version>
     <vdot.version>1.0.0-SNAPSHOT</vdot.version>
     <orderexpansion.version>1.0.0</orderexpansion.version>
 
@@ -93,19 +93,12 @@
       <type>war</type>
       <scope>provided</scope>
     </dependency>
-
     <!-- Module dependencies -->
     <dependency>
       <groupId>org.openmrs.module</groupId>
       <artifactId>initializer-omod</artifactId>
       <version>${initializer.version}</version>
       <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.openmrs.module</groupId>
@@ -118,12 +111,6 @@
       <artifactId>webservices.rest-omod</artifactId>
       <version>${webservices.rest.version}</version>
       <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.openmrs.module</groupId>
@@ -505,16 +492,6 @@
   </profiles>
 
   <repositories>
-    <repository>
-      <id>github</id>
-      <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/donaldkibet/openmrs-module-initializer</url>
-    </repository>
-    <repository>
-      <id>github-webservices</id>
-      <name>GitHub Packages - Webservices REST</name>
-      <url>https://maven.pkg.github.com/donaldkibet/openmrs-module-webservices.rest</url>
-    </repository>
     <repository>
       <id>mks-repo</id>
       <name>Mekom Solutions Nexus Releases</name>
