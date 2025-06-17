@@ -67,7 +67,7 @@
     <insuranceclaims.version>1.0.5-SNAPSHOT</insuranceclaims.version>
     <jasperreport.version>2.1.0-SNAPSHOT</jasperreport.version>
     <kenyacore.version>3.0.2-SNAPSHOT</kenyacore.version>
-    <kenyaemr.cashier.version>4.2.2</kenyaemr.cashier.version>
+    <kenyaemr.cashier.version>4.2.3-SNAPSHOT</kenyaemr.cashier.version>
     <kenyaemr.version>19.2.0</kenyaemr.version>
     <kenyaemrCharts.version>1.6.8</kenyaemrCharts.version>
     <kenyaemrextras.version>1.4.4-SNAPSHOT</kenyaemrextras.version>
