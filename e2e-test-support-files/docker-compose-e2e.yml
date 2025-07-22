@@ -1,0 +1,67 @@
+# E2E docker compose file for testing with database and Liquibase disabled
+
+services:
+  gateway:
+    image: kenyahmis/openmrs-reference-application-3-gateway:qa
+    ports:
+      - '8080:80'
+    depends_on:
+      - frontend
+      - backend
+
+  frontend:
+    image: kenyahmis/openmrs-reference-application-3-frontend:qa
+    environment:
+      SPA_PATH: /openmrs/spa
+      API_URL: /openmrs
+    depends_on:
+      - backend
+
+  backend:
+    image: kenyahmis/openmrs-reference-application-3-backend:qa
+    depends_on:
+      - db
+    environment:
+      # Database connection settings
+      OMRS_CONFIG_CONNECTION_SERVER: db
+      OMRS_CONFIG_CONNECTION_DATABASE: openmrs
+      OMRS_CONFIG_CONNECTION_USERNAME: openmrs
+      OMRS_CONFIG_CONNECTION_PASSWORD: openmrs
+      
+      # Liquibase and database update settings - ALLOW INITIAL SETUP
+      OMRS_CONFIG_AUTO_UPDATE_DATABASE: "true"
+      OMRS_CONFIG_CREATE_TABLES: "true"
+      OMRS_CONFIG_HAS_CURRENT_OPENMRS_DATABASE: "false"
+      
+      # Disable Liquibase changelog execution
+      OMRS_CONFIG_LIQUIBASE_ENABLED: "false"
+      
+      # Disable module updates and metadata updates
+      OMRS_CONFIG_MODULE_WEB_ADMIN: "false"
+      OMRS_CONFIG_UPDATE_USER_PASSWORD: "false"
+      
+      # Disable any automatic database modifications
+      OMRS_CONFIG_DISABLE_AUTO_UPDATE: "true"
+      
+      # Additional Liquibase disabling configurations
+      OMRS_CONFIG_SKIP_DATABASE_UPDATES: "true"
+      OMRS_CONFIG_SKIP_LIQUIBASE: "true"
+      OMRS_CONFIG_DISABLE_LIQUIBASE: "true"
+      
+      # Force skip all updates
+      OMRS_CONFIG_SKIP_ALL_UPDATES: "true"
+      OMRS_CONFIG_IGNORE_DATABASE_UPDATES: "true"
+      
+      # Allow setup wizard for initial setup
+      OMRS_CONFIG_SKIP_SETUP_WIZARD: "false"
+      OMRS_CONFIG_IGNORE_SETUP: "false"
+
+  # Database using snapshot from running container
+  db:
+    image: kenyahmis/openmrs-reference-application-3-database-withdata:e2e-snapshot
+    environment:
+      MYSQL_DATABASE: openmrs
+      MYSQL_USER: openmrs
+      MYSQL_PASSWORD: openmrs
+      MYSQL_ROOT_PASSWORD: openmrs
+    # No persistent volumes - using snapshot data only 
