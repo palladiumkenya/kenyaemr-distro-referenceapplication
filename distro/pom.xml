@@ -48,7 +48,7 @@
     <metadatasharing.version>1.10.0</metadatasharing.version>
     <o3forms.version>2.3.0</o3forms.version>
     <openconceptlab.version>2.4.0</openconceptlab.version>
-    <openmrs.version>2.6.15</openmrs.version>
+    <openmrs.version>2.7.4-SNAPSHOT</openmrs.version>
     <ordertemplates.version>1.0.2</ordertemplates.version>
     <queue.version>2.6.0</queue.version>
     <reporting.version>1.27.0</reporting.version>
