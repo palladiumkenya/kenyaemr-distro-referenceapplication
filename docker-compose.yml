@@ -16,7 +16,7 @@ services:
     environment:
       SPA_PATH: /openmrs/spa
       API_URL: /openmrs
-      SPA_CONFIG_URLS: /openmrs/spa/config/kenyahmis-package/openmrs.config.json,/openmrs/spa/config/kenyahmis-package/kenyaemr.config.json
+      SPA_CONFIG_URLS: /openmrs/spa/config/configs/kenyahmis-package/openmrs.config.json,/openmrs/spa/config/configs/kenyahmis-package/kenyaemr.config.json,/openmrs/spa/config/configs/kenyahmis-package/translations/translations.json
       SPA_DEFAULT_LOCALE: en
     volumes:
       - backend-spa-config:/usr/share/nginx/html/config
