@@ -2,7 +2,7 @@
   "frontendModules": {
     "@openmrs/esm-primary-navigation-app": "next",
     "@openmrs/esm-implementer-tools-app": "next",
-    "@openmrs/esm-devtools-app" :"next",
+    "@openmrs/esm-devtools-app": "next",
     "@openmrs/esm-reports-app": "next",
     "@openmrs/esm-home-app": "next",
     "@openmrs/esm-form-entry-app": "next",
@@ -49,5 +49,6 @@
     "@kenyaemr/esm-morgue-app": "next",
     "@kenyaemr/esm-cross-border-app": "next",
     "@kenyaemr/esm-facility-dashboard-app": "next"
-  }
+  },
+  "pageTitle": "$SPA_PAGE_TITLE"
 }
