@@ -48,6 +48,109 @@ Default credentials:
 - Username: admin
 - Password: Admin123
 
+## Running Ethiopia EMR Instance
+
+This section explains how to configure and run the application with Ethiopia EMR content packages instead of the default KenyaEMR packages.
+
+### Prerequisites
+- Follow the [Quick start](#quick-start) section to set up the basic environment
+- Ensure you have the Ethiopia EMR database dump file (place it in the `mysql-dump` folder)
+
+### Configuration Changes
+
+Before running the Ethiopia instance, you need to modify the content package configuration:
+
+#### 1. Update distro.properties
+In `distro/distro.properties`, ensure the Ethiopia content package is enabled and KenyaHMIS is commented out:
+
+```properties
+# Comment out KenyaHMIS content package
+# content.kenyahmis-package=${kenyahmis-package.version}
+# content.kenyahmis-package.groupId=org.kenyahmis.content
+
+# Enable Ethiopia content package
+content.ethiopiaemr-package=${ethiopiaemr-package.version}
+content.ethiopiaemr-package.groupId=org.ethiopiaemr.content
+```
+
+#### 2. Update pom.xml
+In `distro/pom.xml`, ensure the Ethiopia dependency is enabled and KenyaHMIS is commented out:
+
+```xml
+<!-- Comment out KenyaHMIS dependency -->
+<!--
+<dependency>
+  <groupId>org.kenyahmis.content</groupId>
+  <artifactId>kenyahmis-package</artifactId>
+  <version>${kenyahmis-package.version}</version>
+  <type>zip</type>
+</dependency>
+-->
+
+<!-- Enable Ethiopia dependency -->
+<dependency>
+  <groupId>org.ethiopiaemr.content</groupId>
+  <artifactId>ethiopiaemr-package</artifactId>
+  <version>${ethiopiaemr-package.version}</version>
+  <type>zip</type>
+</dependency>
+```
+
+### Build and Run
+
+#### Option 1: Using Environment Variables (Recommended)
+
+```bash
+# Build with Ethiopia configuration
+SPA_CONFIG_URLS=/openmrs/spa/config/configs/ethiopiaemr-package/openmrs.config.json,/openmrs/spa/config/configs/ethiopiaemr-package/kenyaemr.config.json,/openmrs/spa/config/configs/ethiopiaemr-package/translations/translations.json \
+SPA_PAGE_TITLE='Ethiopia EMR' \
+docker compose build
+
+# Start the application
+SPA_CONFIG_URLS=/openmrs/spa/config/configs/ethiopiaemr-package/openmrs.config.json,/openmrs/spa/config/configs/ethiopiaemr-package/kenyaemr.config.json,/openmrs/spa/config/configs/ethiopiaemr-package/translations/translations.json \
+SPA_PAGE_TITLE='Ethiopia EMR' \
+docker compose up -d
+```
+
+#### Option 2: Using .env File
+
+Create a `.env` file in the project root:
+
+```bash
+# .env
+SPA_CONFIG_URLS=/openmrs/spa/config/configs/ethiopiaemr-package/openmrs.config.json,/openmrs/spa/config/configs/ethiopiaemr-package/kenyaemr.config.json,/openmrs/spa/config/configs/ethiopiaemr-package/translations/translations.json
+SPA_PAGE_TITLE=Ethiopia EMR
+```
+
+Then run:
+```bash
+docker compose build
+docker compose up -d
+```
+
+### Access the Application
+
+The Ethiopia EMR UI is accessible at:
+- Modern UI: http://localhost/openmrs/spa
+- Legacy UI: http://localhost/openmrs
+
+Default credentials:
+- Username: admin
+- Password: Admin123
+
+### Switching Back to KenyaEMR
+
+To switch back to KenyaEMR configuration:
+
+1. Reverse the configuration changes in `distro.properties` and `pom.xml`
+2. Use the default environment variables or remove the `.env` file
+3. Rebuild and restart the application:
+
+```bash
+docker compose build
+docker compose up -d
+```
+
 ## Overview
 
 This distribution consists of four main components:
