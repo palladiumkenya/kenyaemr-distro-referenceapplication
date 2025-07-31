@@ -83,9 +83,24 @@
 
     <!-- Content Packages -->
     <kenyahmis-package.version>1.0.0-SNAPSHOT</kenyahmis-package.version>
+    <!-- <ethiopiaemr-package.version>1.0.0-SNAPSHOT</ethiopiaemr-package.version> -->
   </properties>
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.kenyahmis.content</groupId>
+      <artifactId>kenyahmis-package</artifactId>
+      <version>${kenyahmis-package.version}</version>
+      <type>zip</type>
+    </dependency>
+    <!-- <dependency>
+        <groupId>org.ethiopiaemr.content</groupId>
+        <artifactId>ethiopiaemr-package</artifactId>
+        <version>${ethiopiaemr-package.version}</version>
+        <type>zip</type>
+      </dependency> -->
+
     <dependency>
       <groupId>org.openmrs.web</groupId>
       <artifactId>openmrs-webapp</artifactId>
@@ -364,12 +379,6 @@
       <artifactId>kenyakeypop-omod</artifactId>
       <version>${kenyakeypop.version}</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.kenyahmis.content</groupId>
-      <artifactId>kenyahmis-package</artifactId>
-      <version>${kenyahmis-package.version}</version>
-      <type>zip</type>
     </dependency>
     <dependency>
       <groupId>org.openmrs.module</groupId>
